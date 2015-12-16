@@ -1,5 +1,11 @@
 # Zepto-FastClick
 
+## 설치방법
+
+```
+bower install zepto-fastclick
+```
+
 ## 사용방법
 
 ### FastClick 이벤트
@@ -82,6 +88,12 @@ $.fastClick.activableSelector = 'button'; // default: 'button a'
 ```
 
 --------------
+
+## Installation
+
+```
+bower install zepto-fastclick
+```
 
 ## Usage
 
