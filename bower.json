@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "homepage": "https://github.com/hooriza/zepto-fastclick",
   "authors": [
-    "hooriza <hooriza.com@linecorp.com>"
+    "hooriza <hooriza@gmail.com>"
   ],
   "main": "src/zepto-fastclick.js",
   "license": "MIT",
