@@ -4,6 +4,7 @@
 
 ```
 bower install zepto-fastclick
+npm install zepto-fastclick
 ```
 
 ## 사용방법
@@ -93,6 +94,7 @@ $.fastClick.activableSelector = 'button'; // default: 'button a'
 
 ```
 bower install zepto-fastclick
+npm install zepto-fastclick
 ```
 
 ## Usage
