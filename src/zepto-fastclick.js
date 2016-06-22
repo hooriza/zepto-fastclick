@@ -125,7 +125,12 @@
 	});
 
 	// 스크롤을 멈추려고 눌렀을때 클릭되는 문제
-	document.addEventListener('scroll', clearInfo, true);
+	document.addEventListener('scroll', function(e) {
+		if (!info) { return; }
+		if (info.$target.closest(e.target).length) {
+			clearInfo();
+		}
+	}, true);
 
 	$.fastClick = config;
 	return $.fastClick;
