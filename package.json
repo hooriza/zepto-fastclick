@@ -1,0 +1,22 @@
+{
+  "name": "zepto-fastclick",
+  "version": "0.0.2",
+  "description": "You can use fastclick event if you just replace event name with fastclick.",
+  "main": "./src/zepto-fastclick.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hooriza/zepto-fastclick.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hooriza/zepto-fastclick/issues"
+  },
+  "homepage": "https://github.com/hooriza/zepto-fastclick#readme"
+}
