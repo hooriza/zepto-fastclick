@@ -37,19 +37,18 @@
 		return null;
 	};
 
-	var clearInfo = function() {
+	var clearInfo = function(v) {
 		if (!info) { return; }
-		
+
 		if (info.timer) { clearTimeout(info.timer); }
 		info.$button.removeClass(config.activedClassName);
 		info = null;
 	};
 
 	$document.on('touchstart mousedown', function(evt) {
+		if (evt.type === 'mousedown' && 'ontouchstart' in window) { return; }
 
-    if (evt.type === 'mousedown' && 'ontouchstart' in window) { return; }
-
-    var evt = (evt.originalEvent || evt);
+		var evt = (evt.originalEvent || evt);
 		var touch = evt.touches ? evt.touches[0] : evt;
 
 		var $target = $(touch.target);
@@ -72,8 +71,8 @@
 
 		if (!info) { return; }
 
-    var evt = (evt.originalEvent || evt);
-    var touch = evt.touches ? evt.touches[0] : evt;
+		var evt = (evt.originalEvent || evt);
+		var touch = evt.touches ? evt.touches[0] : evt;
 		var distance = Math.pow(info.pos[0] - touch.pageX, 2) + Math.pow(info.pos[1] - touch.pageY, 2);
 
 		if (distance >= 25) {
@@ -81,7 +80,6 @@
 		}
 
 	}).on('touchend mouseup', function(evt) {
-
 		if (!info) { return; }
 
 		var target = info.$target[0];
