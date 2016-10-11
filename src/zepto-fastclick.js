@@ -39,17 +39,19 @@
 
 	var clearInfo = function() {
 		if (!info) { return; }
-		
+
 		if (info.timer) { clearTimeout(info.timer); }
 		info.$button.removeClass(config.activedClassName);
 		info = null;
 	};
 
+	var eventType = null;
+
 	$document.on('touchstart mousedown', function(evt) {
+		if (eventType) { return; }
+		eventType = evt.type;
 
-    if (evt.type === 'mousedown' && 'ontouchstart' in window) { return; }
-
-    var evt = (evt.originalEvent || evt);
+		var evt = (evt.originalEvent || evt);
 		var touch = evt.touches ? evt.touches[0] : evt;
 
 		var $target = $(touch.target);
@@ -69,11 +71,15 @@
 		$button.addClass(config.activedClassName);
 
 	}).on('touchmove mousemove', function(evt) {
+		if (
+			(evt.type === 'touchmove' && eventType === 'mousedown') ||
+			(evt.type === 'mousemove' && eventType === 'touchstart')
+		) { return; }
 
 		if (!info) { return; }
 
-    var evt = (evt.originalEvent || evt);
-    var touch = evt.touches ? evt.touches[0] : evt;
+		var evt = (evt.originalEvent || evt);
+		var touch = evt.touches ? evt.touches[0] : evt;
 		var distance = Math.pow(info.pos[0] - touch.pageX, 2) + Math.pow(info.pos[1] - touch.pageY, 2);
 
 		if (distance >= 25) {
@@ -81,7 +87,12 @@
 		}
 
 	}).on('touchend mouseup', function(evt) {
+		if (
+			(evt.type === 'touchend' && eventType === 'mousedown') ||
+			(evt.type === 'mouseup' && eventType === 'touchstart')
+		) { return; }
 
+		eventType = null;
 		if (!info) { return; }
 
 		var target = info.$target[0];
