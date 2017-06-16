@@ -45,8 +45,11 @@
 		info = null;
 	};
 
+	var eventType = null;
+
 	$document.on('touchstart mousedown', function(evt) {
-		if (evt.type === 'mousedown' && 'ontouchstart' in window) { return; }
+		if (eventType) { return; }
+		eventType = evt.type;
 
 		var evt = (evt.originalEvent || evt);
 		var touch = evt.touches ? evt.touches[0] : evt;
@@ -68,6 +71,10 @@
 		$button.addClass(config.activedClassName);
 
 	}).on('touchmove mousemove', function(evt) {
+		if (
+			(evt.type === 'touchmove' && eventType === 'mousedown') ||
+			(evt.type === 'mousemove' && eventType === 'touchstart')
+		) { return; }
 
 		if (!info) { return; }
 
@@ -80,6 +87,12 @@
 		}
 
 	}).on('touchend mouseup', function(evt) {
+		if (
+			(evt.type === 'touchend' && eventType === 'mousedown') ||
+			(evt.type === 'mouseup' && eventType === 'touchstart')
+		) { return; }
+
+		eventType = null;
 		if (!info) { return; }
 
 		var target = info.$target[0];
