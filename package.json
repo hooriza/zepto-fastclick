@@ -1,6 +1,6 @@
 {
   "name": "zepto-fastclick",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "You can use fastclick event if you just replace event name with fastclick.",
   "main": "./src/zepto-fastclick.js",
   "directories": {
