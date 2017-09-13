@@ -14,7 +14,7 @@
     "url": "git+https://github.com/hooriza/zepto-fastclick.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/hooriza/zepto-fastclick/issues"
   },
